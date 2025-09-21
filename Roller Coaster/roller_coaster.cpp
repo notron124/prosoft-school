@@ -18,14 +18,13 @@ namespace std {
         std::size_t operator()(const std::vector<int>& v) const {
             std::size_t seed = v.size();
             for (int i : v) {
+                // 0x9e3779b9 - константа, св€занна€ с золотым сечением
                 seed ^= std::hash<int>{}(i) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
             }
             return seed;
         }
     };
 }
-
-
 
 long long calculate_earnings(queue<int> &coaster_queue, const int capacity, const int rides_per_day) {
     long long total_earnings = 0;
@@ -36,7 +35,7 @@ long long calculate_earnings(queue<int> &coaster_queue, const int capacity, cons
     int cap = 0;
 
     int rides_earnings_prev_size = 0;
-    unordered_map<vector<int>, int, vector_hash> rides_earnings;
+    unordered_map<vector<int>, int, vector_hash> group_rides;
     bool is_cycle_established = false;
     bool track_queues = true;
     int rides_to_simulate = 0;
@@ -48,12 +47,12 @@ long long calculate_earnings(queue<int> &coaster_queue, const int capacity, cons
         earnings_per_ride = 0;
         group_cntr = 0;
 
-        if (is_cycle_established && rides_to_simulate > 0) {
+        if (is_cycle_established && rides_to_simulate > 0) { // если замечен цикл, завершаем текущий до конца
             rides_to_simulate--;
-        } else if (is_cycle_established && total_group_cntr >= queue_size) { // ƒаем врем€ алгоритму набрать статистику, иначе возможны сработки на неполные данные
+        } else if (is_cycle_established && total_group_cntr >= queue_size) { // ƒаем врем€ алгоритму хот€ бы раз полностью пройти 1 группу, иначе возможны сработки на неполные данные
             long long cyclic_earnings = 0;
             int cyclic_groups_cntr = 0;
-            for (const auto &[q, v] : rides_earnings) {
+            for (const auto &[q, v] : group_rides) {
                 if (v >= 2) {
                     cyclic_groups_cntr++;
                     for (int gr : q) {
@@ -74,6 +73,7 @@ long long calculate_earnings(queue<int> &coaster_queue, const int capacity, cons
             }
         }
 
+        // пытаемс€ заполнить весь аттракицон
         while (cap > 0) {
             int group = coaster_queue.front();
             cap -= group;
@@ -92,6 +92,7 @@ long long calculate_earnings(queue<int> &coaster_queue, const int capacity, cons
             }
         }
 
+        
         total_group_cntr += group_cntr;
 
         // ¬ случае, если вс€ очередь влезает на аттракцион, просто возвращаем поездки умноженные на выручку с одной поездки
@@ -106,8 +107,8 @@ long long calculate_earnings(queue<int> &coaster_queue, const int capacity, cons
         }
 
         //cerr << "Ride є" << rides_per_day - ride + 1 << endl;
-        rides_earnings[current_ride_queue]++;
-        //for (int i = 0; const auto &[q, v] : rides_earnings) {
+        group_rides[current_ride_queue]++;
+        //for (int i = 0; const auto &[q, v] : group_rides) {
         //    i++;
         //    cerr << "queue є" << i << " [";
         //    for (int gr : q) {
@@ -116,7 +117,7 @@ long long calculate_earnings(queue<int> &coaster_queue, const int capacity, cons
         //    cerr << "] " << ':' << v << endl;
         //}
         
-        int curr_re_size = rides_earnings.size();
+        int curr_re_size = group_rides.size();
         //cerr << curr_re_size << ':' << rides_earnings_prev_size << endl;
 
         if (curr_re_size > rides_earnings_prev_size) {

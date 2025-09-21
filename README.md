@@ -10,5 +10,6 @@
 
 ## Решенные задачи
 - [Moves in maze](Moves%20in%20maze/moves_in_maze.md)
-- [Roller Coaster](Roller%20Coaster/roller_coaster.md)
 - [The labyrinth](The%20labyrinth/the_labyrinth.md)
+- [Roller Coaster](Roller%20Coaster/roller_coaster.md)
+- [Shadows of the Knight - Episode 1](Shadows%20of%20the%20Knight%20-%20Episode%201/shadows_of_the_knight_ep1.md)

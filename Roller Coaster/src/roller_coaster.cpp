@@ -131,6 +131,8 @@ long long calculate_earnings(queue<int> &coaster_queue, const int capacity, cons
     return total_earnings;
 }
 
+// BUILD_TEST опеределяется с помощью CMake, если опция BUILD_TESTS включена, не связано с решением задачи
+#ifndef BUILD_TESTS
 int main()
 {
     queue<int> coaster_queue;
@@ -149,3 +151,4 @@ int main()
 
     cout << total_earnings << endl;
 }
+#endif

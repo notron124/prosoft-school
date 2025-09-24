@@ -1,0 +1,10 @@
+add_executable(test_runner tests_main.cpp)
+
+target_link_libraries(test_runner PRIVATE roller_coaster)
+
+add_test(NAME simple_case COMMAND test_runner simple_case)
+add_test(NAME thousand_groups_of_a_few_people COMMAND test_runner thousand_groups_of_a_few_people)
+add_test(NAME same_groups_several_times COMMAND test_runner same_groups_several_times)
+add_test(NAME all_at_once COMMAND test_runner all_at_once)
+add_test(NAME high_earnings COMMAND test_runner high_earnings)
+add_test(NAME large_dataset COMMAND test_runner large_dataset)

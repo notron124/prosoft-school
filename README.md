@@ -1,2 +1,1 @@
-# prosoft-school
-Репозиторий, содержащий тестовые задания для поступления в школу разработчиков Простофт Систем
+- [Shadows of the Knight - Episode 2](Shadows%20of%20the%20Knight%20-%20Episode%202/shadows_of_the_knight_ep2.md) (Не решена, но мысли описаны)

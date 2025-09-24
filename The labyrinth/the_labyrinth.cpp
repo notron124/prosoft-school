@@ -10,7 +10,7 @@ using namespace std;
 
 inline const bool IGNORE_CONSOLE = true;
 
-// Для инверсии шагов во время возврата по уже пройденным ячейкам
+// Р”Р»СЏ РёРЅРІРµСЂСЃРёРё С€Р°РіРѕРІ РІРѕ РІСЂРµРјСЏ РІРѕР·РІСЂР°С‚Р° РїРѕ СѓР¶Рµ РїСЂРѕР№РґРµРЅРЅС‹Рј СЏС‡РµР№РєР°Рј
 unordered_map<string, string> opposite_steps = {
     {"RIGHT", "LEFT"},
     {"LEFT", "RIGHT"},
@@ -18,7 +18,7 @@ unordered_map<string, string> opposite_steps = {
     {"DOWN", "UP"}
 };
 
-// Инверсия очереди
+// РРЅРІРµСЂСЃРёСЏ РѕС‡РµСЂРµРґРё
 void reverse_queue(queue<string>& q)
 {
     stack<string> s;
@@ -32,7 +32,7 @@ void reverse_queue(queue<string>& q)
     }
 }
 
-// Инкапсуляция приоритетной очереди для удобства и читаемости
+// РРЅРєР°РїСЃСѓР»СЏС†РёСЏ РїСЂРёРѕСЂРёС‚РµС‚РЅРѕР№ РѕС‡РµСЂРµРґРё РґР»СЏ СѓРґРѕР±СЃС‚РІР° Рё С‡РёС‚Р°РµРјРѕСЃС‚Рё
 template<typename T, typename priority_t>
 struct PriorityQueue {
     typedef std::pair<priority_t, T> PQElement;
@@ -54,13 +54,13 @@ struct PriorityQueue {
     }
 };
 
-// Создаем структуру, описывающую нашу ячеку
-// в качестве индикатора о посещении будем использовать '.'
+// РЎРѕР·РґР°РµРј СЃС‚СЂСѓРєС‚СѓСЂСѓ, РѕРїРёСЃС‹РІР°СЋС‰СѓСЋ РЅР°С€Сѓ СЏС‡РµРєСѓ
+// РІ РєР°С‡РµСЃС‚РІРµ РёРЅРґРёРєР°С‚РѕСЂР° Рѕ РїРѕСЃРµС‰РµРЅРёРё Р±СѓРґРµРј РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ '.'
 struct cell {
     int x, y;
 };
 
-// Имплементация hash для cell для возможности напрямую использовать в unordered_set
+// РРјРїР»РµРјРµРЅС‚Р°С†РёСЏ hash РґР»СЏ cell РґР»СЏ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё РЅР°РїСЂСЏРјСѓСЋ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РІ unordered_set
 namespace std {
     template <> struct hash<cell> {
         std::size_t operator()(const cell& id) const noexcept {
@@ -70,7 +70,7 @@ namespace std {
 }
 
 
-// Операторы для структуры cell 
+// РћРїРµСЂР°С‚РѕСЂС‹ РґР»СЏ СЃС‚СЂСѓРєС‚СѓСЂС‹ cell 
 bool operator == (cell a, cell b) {
   return a.x == b.x && a.y == b.y;
 }
@@ -83,7 +83,7 @@ bool operator < (cell a, cell b) {
   return std::tie(a.x, a.y) < std::tie(b.x, b.y);
 }
 
-// Получить шаг, согласно координатам двух ячеек
+// РџРѕР»СѓС‡РёС‚СЊ С€Р°Рі, СЃРѕРіР»Р°СЃРЅРѕ РєРѕРѕСЂРґРёРЅР°С‚Р°Рј РґРІСѓС… СЏС‡РµРµРє
 string get_step(cell curr, cell next) {
     if (next.x > curr.x) {
         return "RIGHT";
@@ -96,7 +96,7 @@ string get_step(cell curr, cell next) {
     }
 }
 
-// Получить соседние ячейки
+// РџРѕР»СѓС‡РёС‚СЊ СЃРѕСЃРµРґРЅРёРµ СЏС‡РµР№РєРё
 vector<cell> neighbors(string *maze, cell current, bool ignore_console = false) {
     vector<cell> possible_steps = {
         {1, 0}, // right
@@ -123,29 +123,29 @@ vector<cell> neighbors(string *maze, cell current, bool ignore_console = false) 
     return neighbors;
 }
 
-// Функция, определяющая предположительный "вес" от ячейки до ячейки
+// Р¤СѓРЅРєС†РёСЏ, РѕРїСЂРµРґРµР»СЏСЋС‰Р°СЏ РїСЂРµРґРїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Р№ "РІРµСЃ" РѕС‚ СЏС‡РµР№РєРё РґРѕ СЏС‡РµР№РєРё
 inline int heuristic(cell a, cell b) {
   return std::abs(a.x - b.x) + std::abs(a.y - b.y);
 }
 
-// Найти кратчайший путь ячейка-ячейка
+// РќР°Р№С‚Рё РєСЂР°С‚С‡Р°Р№С€РёР№ РїСѓС‚СЊ СЏС‡РµР№РєР°-СЏС‡РµР№РєР°
 void find_shortest_way(string *maze, cell start, cell goal, unordered_map<cell, cell> &came_from, unordered_map<cell, int> &cost_so_far) {
-    // создаем приоритетную очередь, куда будем складывать ячейки для обработки
+    // СЃРѕР·РґР°РµРј РїСЂРёРѕСЂРёС‚РµС‚РЅСѓСЋ РѕС‡РµСЂРµРґСЊ, РєСѓРґР° Р±СѓРґРµРј СЃРєР»Р°РґС‹РІР°С‚СЊ СЏС‡РµР№РєРё РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё
     PriorityQueue<cell, int> q;
     q.put(start, 0);
     cost_so_far[start] = 0;
 
-    // обрабатываем попавшие в очередь ячейки
+    // РѕР±СЂР°Р±Р°С‚С‹РІР°РµРј РїРѕРїР°РІС€РёРµ РІ РѕС‡РµСЂРµРґСЊ СЏС‡РµР№РєРё
     while(!q.empty()) {
-        // забираем из очереди передний элемент
+        // Р·Р°Р±РёСЂР°РµРј РёР· РѕС‡РµСЂРµРґРё РїРµСЂРµРґРЅРёР№ СЌР»РµРјРµРЅС‚
         cell curr = q.get();
 
-        // Досрочный выход из цикла, если дошли до цели
+        // Р”РѕСЃСЂРѕС‡РЅС‹Р№ РІС‹С…РѕРґ РёР· С†РёРєР»Р°, РµСЃР»Рё РґРѕС€Р»Рё РґРѕ С†РµР»Рё
         if (curr == goal) {
             break;
         }
 
-        // пробуем совершить шаг
+        // РїСЂРѕР±СѓРµРј СЃРѕРІРµСЂС€РёС‚СЊ С€Р°Рі
         for (cell next : neighbors(maze, curr)) {
             int new_cost = cost_so_far[curr] + 1;
             if (cost_so_far.find(next) == cost_so_far.end() || new_cost < cost_so_far[next]) {
@@ -159,17 +159,17 @@ void find_shortest_way(string *maze, cell start, cell goal, unordered_map<cell, 
 }
 
 void explore_maze(string *maze, cell start, unordered_map<cell, string> &came_from) {
-    // создаем приоритетную очередь, куда будем складывать ячейки для обработки
+    // СЃРѕР·РґР°РµРј РїСЂРёРѕСЂРёС‚РµС‚РЅСѓСЋ РѕС‡РµСЂРµРґСЊ, РєСѓРґР° Р±СѓРґРµРј СЃРєР»Р°РґС‹РІР°С‚СЊ СЏС‡РµР№РєРё РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё
     queue<cell> q;
-    q.push(start); // отправляем ее в очередь для обработки
+    q.push(start); // РѕС‚РїСЂР°РІР»СЏРµРј РµРµ РІ РѕС‡РµСЂРµРґСЊ РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё
 
-    // обрабатываем попавшие в очередь ячейки
+    // РѕР±СЂР°Р±Р°С‚С‹РІР°РµРј РїРѕРїР°РІС€РёРµ РІ РѕС‡РµСЂРµРґСЊ СЏС‡РµР№РєРё
     while(!q.empty()) {
-        // забираем из очереди передний элемент
+        // Р·Р°Р±РёСЂР°РµРј РёР· РѕС‡РµСЂРµРґРё РїРµСЂРµРґРЅРёР№ СЌР»РµРјРµРЅС‚
         cell curr = q.front();
-        q.pop(); // удаляем его из очереди
+        q.pop(); // СѓРґР°Р»СЏРµРј РµРіРѕ РёР· РѕС‡РµСЂРµРґРё
 
-        // пробуем совершить шаг
+        // РїСЂРѕР±СѓРµРј СЃРѕРІРµСЂС€РёС‚СЊ С€Р°Рі
         for (cell next : neighbors(maze, curr, IGNORE_CONSOLE)) {
             if (!came_from.contains(next)) {
                 string step = get_step(curr, next);
@@ -252,7 +252,7 @@ int main()
             }
         }
 
-        // Шагать, пока вектор с шагами не опустеет
+        // РЁР°РіР°С‚СЊ, РїРѕРєР° РІРµРєС‚РѕСЂ СЃ С€Р°РіР°РјРё РЅРµ РѕРїСѓСЃС‚РµРµС‚
         if (!steps.empty()) {
             if (rick_pos != console_pos) {
                 cout << steps.front() << endl;
@@ -265,12 +265,12 @@ int main()
 
         explore_maze(maze, rick_pos, possible_steps);
 
-        // отладка
+        // РѕС‚Р»Р°РґРєР°
         //for (const auto &[key, value]: possible_steps) {
             //cerr << "This: " << key.x << " " << key.y << " Came from: " << value << endl;
         //}
 
-        // Лабиринт исследован, выставить цель на ячейку консоли
+        // Р›Р°Р±РёСЂРёРЅС‚ РёСЃСЃР»РµРґРѕРІР°РЅ, РІС‹СЃС‚Р°РІРёС‚СЊ С†РµР»СЊ РЅР° СЏС‡РµР№РєСѓ РєРѕРЅСЃРѕР»Рё
         if (current_path.size() == possible_steps.size() - 1) {
             maze_explored = true;
             goal.x = console_pos.x;
@@ -283,7 +283,7 @@ int main()
                 .y = -1,
             };
 
-            // выбираем не посещенную соседнюю клетку как цель
+            // РІС‹Р±РёСЂР°РµРј РЅРµ РїРѕСЃРµС‰РµРЅРЅСѓСЋ СЃРѕСЃРµРґРЅСЋСЋ РєР»РµС‚РєСѓ РєР°Рє С†РµР»СЊ
             for (auto next : neighbors(maze, rick_pos, IGNORE_CONSOLE)) {
                 cerr << "next: " << next.x << " " << next.y << endl;
                 if (current_path.find(next) == current_path.end()) {
@@ -292,11 +292,11 @@ int main()
                 }   
             }
 
-            // если непосещенных соседних клеток нет, то возвращаемся
+            // РµСЃР»Рё РЅРµРїРѕСЃРµС‰РµРЅРЅС‹С… СЃРѕСЃРµРґРЅРёС… РєР»РµС‚РѕРє РЅРµС‚, С‚Рѕ РІРѕР·РІСЂР°С‰Р°РµРјСЃСЏ
             if (best_step.x == -1) {
                 cout << current_path[rick_pos] << endl;
             } else {
-                // отмечаем, что эта клетка посещена
+                // РѕС‚РјРµС‡Р°РµРј, С‡С‚Рѕ СЌС‚Р° РєР»РµС‚РєР° РїРѕСЃРµС‰РµРЅР°
                 cout << possible_steps[best_step] << endl;
                 current_path[best_step] = opposite_steps[possible_steps[best_step]];
             }
@@ -304,32 +304,32 @@ int main()
             continue;
         }
 
-        // Добрались до ячейки, выставить цель на выход
+        // Р”РѕР±СЂР°Р»РёСЃСЊ РґРѕ СЏС‡РµР№РєРё, РІС‹СЃС‚Р°РІРёС‚СЊ С†РµР»СЊ РЅР° РІС‹С…РѕРґ
         if (console_pos == rick_pos) {
             goal.x = rick_start_pos.x;
             goal.y = rick_start_pos.y; 
         }
 
-        // Найти кратчайший путь
+        // РќР°Р№С‚Рё РєСЂР°С‚С‡Р°Р№С€РёР№ РїСѓС‚СЊ
         find_shortest_way(maze, rick_pos, goal, came_from, cost_so_far);
 
         cell cur = goal;
 
-        // отладка
+        // РѕС‚Р»Р°РґРєР°
         //for (const auto &[key, value]: came_from) {
             //cerr << "This: " << key.x << " " << key.y << " Came from: " << value.x << " " << value.y << endl;
         //}
 
-        // Заполнять вектор шагами в обратном порядке
+        // Р—Р°РїРѕР»РЅСЏС‚СЊ РІРµРєС‚РѕСЂ С€Р°РіР°РјРё РІ РѕР±СЂР°С‚РЅРѕРј РїРѕСЂСЏРґРєРµ
         while (cur != rick_pos) {
             steps.push(get_step(came_from[cur], cur));
             cur = came_from[cur];
         }
 
-        // Инвесрия вектора
+        // РРЅРІРµСЃСЂРёСЏ РІРµРєС‚РѕСЂР°
         reverse_queue(steps);
 
-        // Сразу сделать 1 шаг, иначе цикл шагов прервется
+        // РЎСЂР°Р·Сѓ СЃРґРµР»Р°С‚СЊ 1 С€Р°Рі, РёРЅР°С‡Рµ С†РёРєР» С€Р°РіРѕРІ РїСЂРµСЂРІРµС‚СЃСЏ
         cout << steps.front() << endl;
         steps.pop();
     }

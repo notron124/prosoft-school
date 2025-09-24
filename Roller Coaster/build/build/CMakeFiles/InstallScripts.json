@@ -1,0 +1,9 @@
+{
+	"InstallScripts" : 
+	[
+		"D:/work/prosoft-school/Roller Coaster/build/build/cmake_install.cmake",
+		"D:/work/prosoft-school/Roller Coaster/build/build/src/cmake_install.cmake",
+		"D:/work/prosoft-school/Roller Coaster/build/build/tests/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

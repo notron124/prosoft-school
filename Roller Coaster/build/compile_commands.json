@@ -1,0 +1,14 @@
+[
+{
+  "directory": "D:/work/prosoft-school/Roller Coaster/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -DBUILD_TESTS=1 -I\"D:/work/prosoft-school/Roller Coaster/src/../inc\" -g -o src\\CMakeFiles\\roller_coaster.dir\\roller_coaster.cpp.obj -c \"D:\\work\\prosoft-school\\Roller Coaster\\src\\roller_coaster.cpp\"",
+  "file": "D:/work/prosoft-school/Roller Coaster/src/roller_coaster.cpp",
+  "output": "D:/work/prosoft-school/Roller Coaster/build/src/CMakeFiles/roller_coaster.dir/roller_coaster.cpp.obj"
+},
+{
+  "directory": "D:/work/prosoft-school/Roller Coaster/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe -I\"D:/work/prosoft-school/Roller Coaster/src/../inc\" -g -o tests\\CMakeFiles\\test_runner.dir\\tests_main.cpp.obj -c \"D:\\work\\prosoft-school\\Roller Coaster\\tests\\tests_main.cpp\"",
+  "file": "D:/work/prosoft-school/Roller Coaster/tests/tests_main.cpp",
+  "output": "D:/work/prosoft-school/Roller Coaster/build/tests/CMakeFiles/test_runner.dir/tests_main.cpp.obj"
+}
+]

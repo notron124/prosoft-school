@@ -1,0 +1,19 @@
+Start testing: Sep 24 18:13 RTZ 4 (зима)
+----------------------------------------------------------
+Unable to find executable: D:/work/prosoft-school/Roller Coaster/build/tests/test_runner.exe
+1/1 Testing: init
+1/1 Test: init
+Command: "" "init"
+Directory: D:/work/prosoft-school/Roller Coaster/build/tests
+"init" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"init" end time: Sep 24 18:13 RTZ 4 (зима)
+"init" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Sep 24 18:13 RTZ 4 (зима)

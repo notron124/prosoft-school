@@ -1,0 +1,105 @@
+Start testing: Sep 24 18:41 RTZ 4 (çèìà)
+----------------------------------------------------------
+1/6 Testing: simple_case
+1/6 Test: simple_case
+Command: "D:/work/prosoft-school/Roller Coaster/build/tests/test_runner.exe" "simple_case"
+Directory: D:/work/prosoft-school/Roller Coaster/build/tests
+"simple_case" start time: Sep 24 18:41 RTZ 4 (çèìà)
+Output:
+----------------------------------------------------------
+7[TEST] simple_case: 
+PASSED
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"simple_case" end time: Sep 24 18:41 RTZ 4 (çèìà)
+"simple_case" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/6 Testing: thousand_groups_of_a_few_people
+2/6 Test: thousand_groups_of_a_few_people
+Command: "D:/work/prosoft-school/Roller Coaster/build/tests/test_runner.exe" "thousand_groups_of_a_few_people"
+Directory: D:/work/prosoft-school/Roller Coaster/build/tests
+"thousand_groups_of_a_few_people" start time: Sep 24 18:41 RTZ 4 (çèìà)
+Output:
+----------------------------------------------------------
+3935[TEST] simple_case: 
+PASSED
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"thousand_groups_of_a_few_people" end time: Sep 24 18:41 RTZ 4 (çèìà)
+"thousand_groups_of_a_few_people" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/6 Testing: same_groups_several_times
+3/6 Test: same_groups_several_times
+Command: "D:/work/prosoft-school/Roller Coaster/build/tests/test_runner.exe" "same_groups_several_times"
+Directory: D:/work/prosoft-school/Roller Coaster/build/tests
+"same_groups_several_times" start time: Sep 24 18:41 RTZ 4 (çèìà)
+Output:
+----------------------------------------------------------
+15[TEST] simple_case: 
+PASSED
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"same_groups_several_times" end time: Sep 24 18:41 RTZ 4 (çèìà)
+"same_groups_several_times" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/6 Testing: all_at_once
+4/6 Test: all_at_once
+Command: "D:/work/prosoft-school/Roller Coaster/build/tests/test_runner.exe" "all_at_once"
+Directory: D:/work/prosoft-school/Roller Coaster/build/tests
+"all_at_once" start time: Sep 24 18:41 RTZ 4 (çèìà)
+Output:
+----------------------------------------------------------
+15000[TEST] simple_case: 
+PASSED
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"all_at_once" end time: Sep 24 18:41 RTZ 4 (çèìà)
+"all_at_once" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/6 Testing: high_earnings
+5/6 Test: high_earnings
+Command: "D:/work/prosoft-school/Roller Coaster/build/tests/test_runner.exe" "high_earnings"
+Directory: D:/work/prosoft-school/Roller Coaster/build/tests
+"high_earnings" start time: Sep 24 18:41 RTZ 4 (çèìà)
+Output:
+----------------------------------------------------------
+4999975000[TEST] simple_case: 
+PASSED
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"high_earnings" end time: Sep 24 18:41 RTZ 4 (çèìà)
+"high_earnings" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/6 Testing: large_dataset
+6/6 Test: large_dataset
+Command: "D:/work/prosoft-school/Roller Coaster/build/tests/test_runner.exe" "large_dataset"
+Directory: D:/work/prosoft-school/Roller Coaster/build/tests
+"large_dataset" start time: Sep 24 18:41 RTZ 4 (çèìà)
+Output:
+----------------------------------------------------------
+89744892565569[TEST] simple_case: 
+PASSED
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"large_dataset" end time: Sep 24 18:41 RTZ 4 (çèìà)
+"large_dataset" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Sep 24 18:41 RTZ 4 (çèìà)

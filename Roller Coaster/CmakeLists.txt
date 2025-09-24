@@ -1,0 +1,15 @@
+cmake_minimum_required(VERSION 3.19)
+
+project(roller_coaster VERSION 1.00)
+
+option(BUILD_TESTS "Build unit tests" ON)
+
+add_subdirectory(src)
+
+if (BUILD_TESTS)
+   message("BUILD_TESTS option is ON, building tests...")
+   enable_testing()
+   set(CTEST_BINARY_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/tests)
+   add_subdirectory(tests)
+   target_compile_definitions(roller_coaster PRIVATE BUILD_TESTS=1)
+endif()

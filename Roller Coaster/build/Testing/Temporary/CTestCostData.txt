@@ -1,0 +1,9 @@
+init 2 0.00390225
+simple_case 3 0.00249923
+thound_groups_of_a_few_people 0 0
+same_groups_several_times 1 0.0068014
+all_at_once 1 0.0065883
+high_earnings 1 0.0069547
+large_dataset 1 0.0109796
+thousand_groups_of_a_few_people 1 0.0065428
+---

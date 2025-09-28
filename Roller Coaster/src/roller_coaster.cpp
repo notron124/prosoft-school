@@ -61,7 +61,6 @@ long long calculate_earnings(queue<int> &coaster_queue, const int capacity, cons
                 }
             }
 
-            //cerr << total_earnings << ':' << ride << ':' << cyclic_groups_cntr << ':' << cyclic_earnings << endl;
             if (cyclic_groups_cntr > 0) {
                 total_earnings += (ride / cyclic_groups_cntr) * cyclic_earnings;
                 ride = ride % cyclic_groups_cntr;
@@ -106,19 +105,9 @@ long long calculate_earnings(queue<int> &coaster_queue, const int capacity, cons
             continue;
         }
 
-        //cerr << "Ride в„–" << rides_per_day - ride + 1 << endl;
         group_rides[current_ride_queue]++;
-        //for (int i = 0; const auto &[q, v] : group_rides) {
-        //    i++;
-        //    cerr << "queue в„–" << i << " [";
-        //    for (int gr : q) {
-        //        cerr << gr << " ";
-        //    }
-        //    cerr << "] " << ':' << v << endl;
-        //}
         
         int curr_re_size = group_rides.size();
-        //cerr << curr_re_size << ':' << rides_earnings_prev_size << endl;
 
         if (curr_re_size > rides_earnings_prev_size) {
             rides_earnings_prev_size = curr_re_size;
@@ -131,7 +120,7 @@ long long calculate_earnings(queue<int> &coaster_queue, const int capacity, cons
     return total_earnings;
 }
 
-// BUILD_TEST опеределяется с помощью CMake, если опция BUILD_TESTS включена, не связано с решением задачи
+// BUILD_TEST РѕРїСЂРµРґРµР»СЏРµС‚СЃСЏ РїСЂРё СЃР±РѕСЂРєРµ СЃ РїРѕРјРѕС‰СЊСЋ CMake, #ifndef РЅСѓР¶РµРЅ РґР»СЏ РёР·Р±РµР¶Р°РЅРёСЏ РѕС€РёР±РєРё СЃ РјРЅРѕР¶РµСЃС‚РІРµРЅРЅС‹РјРё main
 #ifndef BUILD_TESTS
 int main()
 {

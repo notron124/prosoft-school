@@ -234,12 +234,10 @@ int main()
         rick_pos.x = kc;
         rick_pos.y = kr;
 
-        cerr << "RICK POS: " << rick_pos.x << " " << rick_pos.y << endl;
-
-
         for (int i = 0; i < r; i++) {
             string row; // C of the characters in '#.TC?' (i.e. one line of the ASCII maze).
             cin >> row; cin.ignore();
+            // отладка, в этой задаче ее оставил, так как интересно наблюдать, как сканируется лабиринт
             cerr << row << endl;
             maze[i] = row;
 
@@ -265,11 +263,6 @@ int main()
 
         explore_maze(maze, rick_pos, possible_steps);
 
-        // отладка
-        //for (const auto &[key, value]: possible_steps) {
-            //cerr << "This: " << key.x << " " << key.y << " Came from: " << value << endl;
-        //}
-
         // Лабиринт исследован, выставить цель на ячейку консоли
         if (current_path.size() == possible_steps.size() - 1) {
             maze_explored = true;
@@ -285,7 +278,6 @@ int main()
 
             // выбираем не посещенную соседнюю клетку как цель
             for (auto next : neighbors(maze, rick_pos, IGNORE_CONSOLE)) {
-                cerr << "next: " << next.x << " " << next.y << endl;
                 if (current_path.find(next) == current_path.end()) {
                     best_step = next;
                     break;
@@ -314,11 +306,6 @@ int main()
         find_shortest_way(maze, rick_pos, goal, came_from, cost_so_far);
 
         cell cur = goal;
-
-        // отладка
-        //for (const auto &[key, value]: came_from) {
-            //cerr << "This: " << key.x << " " << key.y << " Came from: " << value.x << " " << value.y << endl;
-        //}
 
         // Заполнять вектор шагами в обратном порядке
         while (cur != rick_pos) {

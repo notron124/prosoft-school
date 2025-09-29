@@ -11,6 +11,8 @@ using namespace std;
  * the standard input according to the problem statement.
  **/
 
+ // Функция для аналитического определения следующих границ
+ // Основана на геометрических неравенствах и не является "правильным" решением данной задачи
 tuple<int, int, int, int> get_new_borders(int x0, int y0, int x, int y, int min_x, int max_x, int min_y, int max_y, const string_view info) {
     cerr << "narrow: x0=" << x0 << ", y0=" << y0 << ", x=" << x << ", y=" << y << ", info=" << info << endl;
     if (min_x != max_x) {
@@ -100,6 +102,7 @@ int main()
         x0 = next_x;
         y0 = next_y;
 
+        // Выбор наиболее оптимального деления плоскости по 1 оси
         if (min_x != max_x) {
             if (x0 == 0 && max_x - min_x + 1 != w) {
                 next_x = (min_x + max_x) / 2;

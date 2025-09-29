@@ -9,8 +9,16 @@
 В школу хочу попасть с целью улучшения базовых знаний с углублением в С++, ОПП. Интересны оба направления разработки, но больше хотел бы попробовать себя в desktop-приложениях.
 
 ## Решенные задачи
+### Средние
+Описание решения в данных задачах довольно скудно, так как многого в них и не скажешь. Основные силы приложил к Сложным и Очень сложным задачам.
+
 - [Moves in maze](Moves%20in%20maze/moves_in_maze.md)
-- [The labyrinth](The%20labyrinth/the_labyrinth.md)
-- [Roller Coaster](Roller%20Coaster/roller_coaster.md) (Тут есть автотесты!)
 - [Shadows of the Knight - Episode 1](Shadows%20of%20the%20Knight%20-%20Episode%201/shadows_of_the_knight_ep1.md)
+
+### Сложные
+- [The labyrinth](The%20labyrinth/the_labyrinth.md)
+- [Roller Coaster](Roller%20Coaster/roller_coaster.md) (С автотестами)
+- [Super Computer](Super%20Computer/super_computer.md) (Оформлен в виде класса)
+
+### Очень сложные
 - [Shadows of the Knight - Episode 2](Shadows%20of%20the%20Knight%20-%20Episode%202/shadows_of_the_knight_ep2.md) (Не решена, но мысли описаны)
